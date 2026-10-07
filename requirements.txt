@@ -1,0 +1,21 @@
+# Apple Silicon MLX & Speech-to-Text
+mlx>=0.20.0
+parakeet-mlx>=0.4.0
+soundfile>=0.12.1
+numpy>=1.26.0
+
+# Computer Vision & Slide Capture
+opencv-python>=4.9.0
+
+# Gemini AI & Structured Schemas
+google-genai>=1.0.0
+pydantic>=2.7.0
+
+# Terminal UI, Config & macOS Native HUD
+rich>=13.7.0
+python-dotenv>=1.0.0
+pyobjc-framework-Cocoa>=10.0; sys_platform == 'darwin'
+
+# Testing
+pytest>=7.4.0
+

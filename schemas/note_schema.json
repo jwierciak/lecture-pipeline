@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LectureSynthesisOutput",
+  "description": "Strukturyzowany schemat wyjściowy dla modelu generującego notatkę z wykładu",
+  "type": "object",
+  "properties": {
+    "frontmatter": {
+      "type": "object",
+      "description": "Metadane YAML do nagłówka notatki w Obsidianie",
+      "properties": {
+        "topic": {
+          "type": "string",
+          "description": "Precyzyjny temat wykładu (np. Wprowadzenie do prawa podatkowego)"
+        },
+        "date": {
+          "type": "string",
+          "description": "Data wykładu w formacie YYYY-MM-DD"
+        },
+        "course": {
+          "type": "string",
+          "description": "Dokładna nazwa przedmiotu (np. Doradztwo podatkowe, Rachunkowość Zarządcza)"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Lista tagów Obsidiana, każdy tag jako pojedynczy hashtag, np. #studia, #podatki"
+        }
+      },
+      "required": ["topic", "date", "course", "tags"]
+    },
+    "title": {
+      "type": "string",
+      "description": "Główny tytuł wykładu H1 (np. Wykład 1: Wprowadzenie i podstawowe pojęcia prawa podatkowego)"
+    },
+    "key_concepts": {
+      "type": "array",
+      "description": "Kluczowe pojęcia i definicje ujęte w zwięzłe punkty z wykorzystaniem wikilinków Obsidiana [[Pojęcie]]",
+      "items": {
+        "type": "object",
+        "properties": {
+          "concept": {
+            "type": "string",
+            "description": "Nazwa pojęcia (często wikilink [[Pojęcie]])"
+          },
+          "definition": {
+            "type": "string",
+            "description": "Syntetyczna, formalna definicja"
+          }
+        },
+        "required": ["concept", "definition"]
+      }
+    },
+    "important_details": {
+      "type": "array",
+      "description": "Szczegóły prawne, bilansowe, wzory matematyczne, wyjątki i niuanse",
+      "items": { "type": "string" }
+    },
+    "examples": {
+      "type": "array",
+      "description": "Konkretne studia przypadków, kalkulacje liczbowe i przykłady omówione przez wykładowcę",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_title": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["case_title", "description"]
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Zwięzła, profesjonalna synteza wykładu (1-2 akapity)"
+    },
+    "related_topics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Lista powiązanych zagadnień w formacie wikilinków Obsidiana, np. [[Ordynacja podatkowa]], [[Podatek]]"
+    }
+  },
+  "required": [
+    "frontmatter",
+    "title",
+    "key_concepts",
+    "important_details",
+    "examples",
+    "summary",
+    "related_topics"
+  ]
+}
