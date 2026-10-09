@@ -9,7 +9,7 @@
 [![Notes Sync](https://img.shields.io/badge/Notes-Obsidian%20Vault-7C3AED?logo=obsidian&style=flat-square)](https://obsidian.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-**Autonomous multimodal pipeline for academic lectures on Apple Silicon (M1/M2/M3/M4).**  
+**Autonomous multimodal pipeline for academic lectures on Apple Silicon.**  
 Transcribes on-device at 15x real-time speed, extracts & crops video presentation slides, synthesizes comprehensive structured notes for Obsidian, compresses video with hardware HEVC (-75%), and streams progress to a native macOS Floating HUD.
 
 [English Documentation](README.md) • [Wersja polska (Polish Documentation)](README.pl.md)
@@ -103,7 +103,7 @@ Management Accounting/
 ## 📦 Quickstart & Installation
 
 ### 1. Prerequisites
-- macOS on Apple Silicon (M1, M2, M3, M4 or later)
+- macOS on Apple Silicon
 - Python 3.11 or 3.12 (Homebrew, Conda, or Python.org)
 - Google Gemini API key ([Get a free key at Google AI Studio](https://aistudio.google.com/))
 
