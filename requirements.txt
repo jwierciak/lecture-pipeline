@@ -6,6 +6,8 @@ numpy>=1.26.0
 
 # Computer Vision & Slide Capture
 opencv-python>=4.9.0
+Pillow>=10.0.0
+pillow-jxl-plugin>=1.0.0  # JPEG XL support (requires libjxl via: brew install jpeg-xl)
 
 # Gemini AI & Structured Schemas
 google-genai>=1.0.0

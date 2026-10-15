@@ -7,6 +7,8 @@ import time
 from pathlib import Path
 import cv2
 import numpy as np
+from PIL import Image
+import pillow_jxl  # noqa: F401 – registers the JXL encoder/decoder with Pillow
 from slide_cropper import auto_crop_slide_content
 
 def extract_slides(video_path: Path, output_dir: Path, step_secs: float = 6.0, diff_threshold: float = 12.0, progress_callback=None):
@@ -75,14 +77,16 @@ def extract_slides(video_path: Path, output_dir: Path, step_secs: float = 6.0, d
                     sec = int(frame_idx / fps)
                     m = sec // 60
                     s = sec % 60
-                    slide_name = f"slide_{m:02d}_{s:02d}.webp"
+                    slide_name = f"slide_{m:02d}_{s:02d}.jxl"
                     slide_path = output_dir / slide_name
-                    
+
                     # Auto-crop meeting chrome / sidebars
                     cropped_frame = auto_crop_slide_content(frame)
-                    
-                    # Save compressed WebP (quality 75)
-                    cv2.imwrite(str(slide_path), cropped_frame, [cv2.IMWRITE_WEBP_QUALITY, 75])
+
+                    # Save as JPEG XL (effort=7, lossy quality 80 on 0-100 scale)
+                    rgb_frame = cv2.cvtColor(cropped_frame, cv2.COLOR_BGR2RGB)
+                    pil_img = Image.fromarray(rgb_frame)
+                    pil_img.save(str(slide_path), format="JXL", lossless=False, effort=7, quality=80)
                     saved_slides.append({
                         "time": f"{m:02d}:{s:02d}",
                         "path": slide_path,
